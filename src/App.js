@@ -34,7 +34,7 @@ class App extends React.Component {
     e.preventDefault();
     // Below we setup how the new task will look. It will be the same as our oringinal tasks.
     const newTask = {
-      name: task,
+      task: task,
       id: Date.now(),
       completed: false
     };
