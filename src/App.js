@@ -17,7 +17,7 @@ const todoList = [
   }
 ];
 
-
+// App is the paren to TodoList and passes props down to it
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -30,17 +30,17 @@ class App extends React.Component {
   }
 
     // The reason why we put the addItem function in App is because we will be manipulating the state of the app when we add a new task 
-  addItem = (e, item) => {
+  addItem = (e, task) => {
     e.preventDefault();
     // Below we setup how the new task will look. It will be the same as our oringinal tasks.
-    const newItem = {
-      name: item,
+    const newTask = {
+      name: task,
       id: Date.now(),
       completed: false
     };
     //Here we use the spread operator on the original state and then add the newItem
     this.setState({
-      todoList: [...this.state.todoList, newItem]
+      todoList: [...this.state.todoList, newTask]
     });
   };
 
@@ -48,7 +48,7 @@ class App extends React.Component {
     return (
       <div className='App'>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
+        <TodoForm addItem={this.addItem} />
         <TodoList list={this.state.todoList}/>        
       </div>
     );
