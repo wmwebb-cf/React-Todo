@@ -10,8 +10,7 @@ const TodoList = props => {
             {props.list.map(item => (
                 <div key={item.id}>
                     <Todo item={item} />
-                </div>
-                
+                </div>  
             ))}
         </div>
     )}

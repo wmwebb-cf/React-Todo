@@ -16,7 +16,7 @@ class TodoForm extends React.Component {
     //item from state is being reset to an empty after the submit event
     //handleSubmit takes the function addItem from App as a prop
     handleSubmit = e => {
-        e.preventDefault();
+        //e.preventDefault();
         this.setState({task: ''});
         this.props.addItem(e, this.state.task) 
     };
