@@ -1,6 +1,9 @@
 import React from 'react';
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 
+
+//setting up the original data for the App to work with
 const todoList = [
   {
     task: 'Organize Garage',
@@ -25,11 +28,28 @@ class App extends React.Component {
       todoList
     }
   }
+
+    // The reason why we put the addItem function in App is because we will be manipulating the state of the app when we add a new task 
+  addItem = (e, item) => {
+    e.preventDefault();
+    // Below we setup how the new task will look. It will be the same as our oringinal tasks.
+    const newItem = {
+      name: item,
+      id: Date.now(),
+      completed: false
+    };
+    //Here we use the spread operator on the original state and then add the newItem
+    this.setState({
+      todoList: [...this.state.todoList, newItem]
+    });
+  };
+
   render() {
     return (
-      <div>
+      <div className='App'>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList list={this.state.todoList}/>
+        <TodoForm />
+        <TodoList list={this.state.todoList}/>        
       </div>
     );
   }
